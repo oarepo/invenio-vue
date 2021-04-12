@@ -1,0 +1,32 @@
+{
+  "name": "@oarepo/invenio-vue",
+  "version": "",
+  "private": false,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "homepage": "https://github.com/oarepo/invenio-vue",
+  "repository": "github:oarepo/invenio-vue",
+  "description": "Vue 3 library for handling invenio REST",
+  "keywords": [
+    "vue",
+    "vue 3",
+    "invenio",
+    "oarepo"
+  ],
+  "license": "MIT",
+  "author": "Mirek Simek <miroslav.simek@gmail.com>",
+  "main": "oarepo-invenio-vue.cjs.js",
+  "module": "oarepo-invenio-vue.esm.js",
+  "dependencies": {
+    "@oarepo/vue-query-synchronizer": "^3.0.0-a4",
+    "axios": "^0.21.1",
+    "deep-equal": "^2.0.5",
+    "deepcopy": "^2.1.0",
+    "deepmerge": "^4.2.2",
+    "swrv": "^1.0.0-beta.8",
+    "vue": "^3.0.0",
+    "vue-class-component": "^8.0.0-0",
+    "vue-router": "^4.0.0-0"
+  }
+}

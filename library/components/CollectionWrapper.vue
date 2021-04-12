@@ -12,7 +12,9 @@ import {useQuery} from "@oarepo/vue-query-synchronizer";
 import {callAndWatch} from "../utils";
 import {InvenioCollectionComposable} from "../invenio";
 import {useRoute} from "vue-router";
+// @ts-ignore // workaround for https://github.com/ezolenko/rollup-plugin-typescript2/issues/129
 import EmptyLoadingComponent from './EmptyLoadingComponent.vue'
+// @ts-ignore
 import SimpleErrorComponent from './SimpleErrorComponent.vue'
 
 export default defineComponent({

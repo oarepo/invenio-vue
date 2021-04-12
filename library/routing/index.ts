@@ -1,4 +1,6 @@
+// @ts-ignore       // workaround for https://github.com/ezolenko/rollup-plugin-typescript2/issues/129
 import CollectionWrapper from '../components/CollectionWrapper.vue'
+
 import deepmerge from 'deepmerge'
 import {InvenioCollectionOptions} from "../invenio";
 import {HttpError} from "../http";

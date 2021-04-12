@@ -1,5 +1,6 @@
 name: npmjs package
-#on:
+on:
+  push
 #  release:
 #    types: [created]
 jobs:

@@ -20,7 +20,7 @@
       "@/*": [
         "src/*"
       ],
-      "@oarepo/invenio-api": [
+      "@oarepo/invenio-vue": [
         "library/index.ts"
       ]
     },

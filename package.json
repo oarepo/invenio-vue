@@ -1,5 +1,5 @@
 {
-  "name": "invenio-api",
+  "name": "invenio-vue",
   "version": "3.0.0a1",
   "private": true,
   "scripts": {

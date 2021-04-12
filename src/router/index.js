@@ -1,6 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import Home from '../views/Home.vue'
-import {collection} from "@oarepo/invenio-api";
+import {collection} from "@oarepo/invenio-vue";
 
 const routes = [
     {

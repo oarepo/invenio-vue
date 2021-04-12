@@ -11,7 +11,7 @@ module.exports = {
         config
             .resolve
             .alias
-            .set('@oarepo/invenio-api',
+            .set('@oarepo/invenio-vue',
                 path.resolve(__dirname, 'library'))
     },
 

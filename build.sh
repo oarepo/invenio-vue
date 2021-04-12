@@ -6,6 +6,10 @@ yarn bili
 rm -rf dist/src
 
 # set the version in package.json
-./node_modules/.bin/jq --arg version $(jq -r ".version" package.json) '.version=$version' library/package.json >dist/package.json
+cp library/package.json dist/package.json
+(
+  cd dist;
+  npm version ${GITHUB_REF#refs/tags/}
+)
 
 cp README.md dist

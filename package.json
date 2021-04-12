@@ -1,0 +1,71 @@
+{
+  "name": "invenio-api",
+  "version": "3.0.0a1",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --host localhost",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test": "yarn jest"
+  },
+  "dependencies": {
+    "@oarepo/quasar-es-facets": "^1.0.0-a3",
+    "@oarepo/vue-query-synchronizer": "^3.0.0-a4",
+    "@quasar/extras": "^1.0.0",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "deep-equal": "^2.0.5",
+    "deepcopy": "^2.1.0",
+    "deepmerge": "^4.2.2",
+    "quasar": "^2.0.0-beta.1",
+    "swrv": "^1.0.0-beta.8",
+    "vue": "^3.0.0",
+    "vue-class-component": "^8.0.0-0",
+    "vue-router": "^4.0.0-0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.22",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "@vue/test-utils": "^2.0.0-rc.4",
+    "axios-mock-adapter": "^1.19.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0",
+    "flush-promises": "^1.0.2",
+    "jest": "^27.0.0-next.7",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "ts-jest": "^27.0.0-next.10",
+    "typescript": "~4.1.5",
+    "vue-cli-plugin-quasar": "^4.0.0-beta.1",
+    "vue-jest": "^5.0.0-alpha.7"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended",
+      "@vue/typescript"
+    ],
+    "parserOptions": {
+      "parser": "@typescript-eslint/parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -1,6 +1,7 @@
 import {Http, HttpError, HttpLoadOptions, HttpOptions, HttpQuery, useHttp} from '../http'
 import {Ref} from "vue";
 import {SWRVCache} from "swrv";
+import {NullableProps} from "../types";
 
 export interface JsonType {
     [key: string]: string | null | number | boolean | JsonType
@@ -128,9 +129,19 @@ export interface InvenioCollectionComposable<CollectionRecord,
     setUrl: (url: string) => void
 }
 
-export type InvenioRecordOptions<Record, ErrorType extends HttpError> = {} & HttpOptions<Record, ErrorType>
+export interface InvenioRecord<RecordMetadata> {
+    metadata: RecordMetadata
+}
 
-export interface InvenioRecordComposable<Record,
-    ErrorType extends HttpError> extends Http<Record, ErrorType> {
+export type InvenioRecordOptions<Record, ErrorType extends HttpError> =
+    {} & HttpOptions<InvenioRecord<Record>, ErrorType>
+
+export interface InvenioRecordComposable<RecordMetadata, ErrorType extends HttpError> {
+
+    http: Http<InvenioRecord<RecordMetadata>, ErrorType>,
+    metadata: Ref<RecordMetadata | undefined>,
+    setUrl: (url: string) => void,
+    createModel: () => Ref<NullableProps<RecordMetadata>>
+    releaseModel: () => void
 }
 

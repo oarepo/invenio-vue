@@ -18,10 +18,7 @@ import {
     PaginatedInvenioCollection
 } from "./types";
 import {computed, Ref, ref, watch} from "vue";
-
-import LocalStorageCache from 'swrv/dist/cache/adapters/localStorage'
-
-const optionsCache = new LocalStorageCache()
+import {optionsCache} from "./options";
 
 export function useInvenioCollection<CollectionRecord extends JsonType, ErrorType extends HttpError>(
     url: string,

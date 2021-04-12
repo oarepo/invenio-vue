@@ -1,8 +1,11 @@
 // @ts-ignore       // workaround for https://github.com/ezolenko/rollup-plugin-typescript2/issues/129
 import CollectionWrapper from '../components/CollectionWrapper.vue'
 
+// @ts-ignore       // workaround for https://github.com/ezolenko/rollup-plugin-typescript2/issues/129
+import RecordWrapper from '../components/RecordWrapper.vue'
+
 import deepmerge from 'deepmerge'
-import {InvenioCollectionOptions} from "../invenio";
+import {InvenioCollectionOptions, InvenioRecordOptions} from "../invenio";
 import {HttpError} from "../http";
 
 
@@ -95,6 +98,41 @@ export function collection<CollectionRecord, ErrorType extends HttpError>(
                 q: 'string:'
             }
         }
+    }
+    if (extra) {
+        proto = deepmerge(proto, extra)
+    }
+    return proto
+}
+
+
+export function record<Record, ErrorType extends HttpError>(
+    opts: {
+        name: string,
+        path: string,
+        component: string | Object | Function,
+        errorComponent?: string | Object | Function,
+        loadingComponent?: string | Object | Function,
+        url?: string,
+        options?: InvenioRecordOptions<Record, ErrorType>
+    },
+    extra: any
+):
+    any {
+    let proto = {
+        path: (opts.path !== undefined ? opts.path : '/'),
+        name: opts.name,
+        component: RecordWrapper,
+        props: {
+            viewerComponent: opts.component,
+            errorComponent: opts.errorComponent,
+            loadingComponent: opts.loadingComponent,
+            url: opts.url,
+            options: opts.options || {
+                revalidateOnFocus: false
+            }
+        },
+        meta: {}
     }
     if (extra) {
         proto = deepmerge(proto, extra)

@@ -1,6 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import Home from '../views/Home.vue'
-import {collection} from "@oarepo/invenio-vue";
+import {collection, record} from "@oarepo/invenio-vue";
 
 const routes = [
     {
@@ -12,6 +12,11 @@ const routes = [
         path: '/all/',
         name: 'all',
         component: () => import('../views/Collection.vue')
+    }),
+    record({
+        path: '/:communityId/:model/:state/:recordId',
+        name: 'record',
+        component: () => import('../views/Record.vue')
     }),
     {
         path: '/about',

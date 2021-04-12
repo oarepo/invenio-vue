@@ -4,4 +4,7 @@ export default {
 }
 
 export * from './http'
-export {collection} from './routing'
+
+export * from './invenio'
+
+export {collection, record} from './routing'

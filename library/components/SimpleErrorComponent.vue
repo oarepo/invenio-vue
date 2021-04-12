@@ -38,8 +38,10 @@ export default defineComponent({
   name: 'simple-error',
   props: {
     collection: {
-      type: Object,
-      required: true
+      type: Object
+    },
+    record: {
+      type: Object
     },
     title: {
       type: String,
@@ -47,12 +49,15 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const hasHtmlError = computed(() => {
-      return props.collection.http.error &&
-          props.collection.http.error.reason &&
-          (typeof props.collection.http.error.reason === 'string')
+    const err = computed(() => {
+      return props.collection?.http.error || props.record?.http.error
     })
-    return { err: props.collection.http.error, hasHtmlError }
+    const hasHtmlError = computed(() => {
+      return err.value &&
+          err.value.reason &&
+          (typeof err.value.reason === 'string')
+    })
+    return { err: err, hasHtmlError }
   }
 })
 </script>

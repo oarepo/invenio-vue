@@ -12,6 +12,7 @@
         <div v-for="(title, idx) in record.metadata.title || []" :key="idx">
           <b>{{ title.en || title.cs }}</b>
         </div>
+        <router-link :to="pathFromUrl(record.links.self)">{{record.links.self}}</router-link>
         <div>
           <a href="" v-if="!record.more" @click.prevent="record.more=true">more ...</a>
           <div v-else style="margin-top: 20px">
@@ -103,6 +104,10 @@ export default class Collection extends Vue {
         this.$query[k] = [...v]
       }
     }
+  }
+
+  pathFromUrl(url) {
+    return new URL(url).pathname
   }
 }
 </script>

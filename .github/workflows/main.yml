@@ -15,7 +15,6 @@ jobs:
       - name: install
         run: |
           yarn install
-          yarn list
 
       - name: build
         run: |

@@ -51,7 +51,7 @@
     "vue-cli-plugin-quasar": "^4.0.0-beta.1",
     "vue-jest": "^5.0.0-alpha.7",
     "vue-template-compiler": "^2.6.12",
-    "winston": "^3.3.3"
+    "winston": "^2.0.0"
   },
   "eslintConfig": {
     "root": true,

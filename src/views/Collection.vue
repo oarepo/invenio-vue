@@ -36,7 +36,7 @@
     <div class="col-4">
       <facets
           :definition="collection.facetDefinitions"
-          :options="options"
+          :options="facetsOptions"
           :facetLoader="facetLoader"
           @facetSelected="facetSelected"
           drawer
@@ -59,6 +59,8 @@ import {debounce} from "@/debouncer";
   }
 })
 export default class Collection extends Vue {
+  facetsOptions = {}
+
   get pages() {
     const ret = []
 

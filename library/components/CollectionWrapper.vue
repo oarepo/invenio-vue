@@ -48,7 +48,7 @@ export default defineComponent({
 
     const currentUrl = computed(() => props.url || route.path)
 
-    callAndWatch([props.options], () => {
+    callAndWatch(() => props.options, () => {
       collection.value = useInvenioCollection(
           currentUrl.value,
           query,

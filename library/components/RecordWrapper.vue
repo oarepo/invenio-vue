@@ -46,7 +46,7 @@ export default defineComponent({
 
     const currentUrl = computed(() => props.url || route.path)
 
-    callAndWatch([props.options], () => {
+    callAndWatch(() => props.options, () => {
       console.log('record current url', currentUrl.value)
       record.value = useInvenioRecord(
           currentUrl.value,

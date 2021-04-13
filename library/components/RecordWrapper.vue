@@ -3,6 +3,7 @@
       :is="currentComponent"
       :record="record"
       v-bind="propsAndAttributes"
+      @reload="record.http.reload"
   ></component>
 </template>
 

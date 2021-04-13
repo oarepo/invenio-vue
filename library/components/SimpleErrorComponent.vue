@@ -28,7 +28,7 @@
       <div v-html="err.reason" v-if="hasHtmlError"></div>
       <pre v-else>{{ err.reason }}</pre>
     </div>
-    <button class="reload" @click.prevent="reload" v-if="reload">Reload</button>
+    <button class="reload" @click.prevent="reload()">Reload</button>
   </div>
 </template>
 <script>
@@ -48,7 +48,8 @@ export default defineComponent({
       default: 'Error loading data'
     }
   },
-  setup(props) {
+  emits: ['reload'],
+  setup(props, ctx) {
     const err = computed(() => {
       return props.collection?.http.error || props.record?.http.error
     })
@@ -57,7 +58,11 @@ export default defineComponent({
           err.value.reason &&
           (typeof err.value.reason === 'string')
     })
-    return { err: err, hasHtmlError }
+    return {
+      err: err,
+      hasHtmlError,
+      reload: () => ctx.emit('reload')
+    }
   }
 })
 </script>

@@ -92,9 +92,17 @@ export function useHttp<DataType, ErrorType extends HttpError>
                         payload: resp
                     }
                 } catch (e) {
-                    throw {
-                        promiseKey: promise.key,
-                        error: e
+                    const response = e.response
+                    if (response) {
+                        return {
+                            promiseKey: promise.key,
+                            error: e
+                        }
+                    } else {
+                        throw {
+                            promiseKey: promise.key,
+                            error: e
+                        }
                     }
                 }
             }, options || {})
@@ -106,11 +114,17 @@ export function useHttp<DataType, ErrorType extends HttpError>
             }
         } else {
             finishedAt.value = new Date()
-            if (rawError.value) {
+
+            let err = rawError.value
+            if (!err && rawData.value && rawData.value.error) {
+                err = rawData.value
+            }
+
+            if (err) {
                 error.value = options?.errorFormatter ?
-                    options.errorFormatter(rawError.value.error) :
-                    defaultErrorFormatter(rawError.value.error) as ErrorType
-                if (rawError.value.promiseKey) {
+                    options.errorFormatter(err.error) :
+                    defaultErrorFormatter(err.error) as ErrorType
+                if (err.promiseKey) {
                     rejectPromise(error.value)
                 }
             } else if (rawData.value) {

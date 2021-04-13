@@ -3,6 +3,7 @@
       :is="currentComponent"
       :collection="collection"
       v-bind="propsAndAttributes"
+      @reload="collection.http.reload"
   ></component>
 </template>
 <script lang="ts">

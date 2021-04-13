@@ -118,6 +118,9 @@ export interface InvenioCollectionComposable<CollectionRecord,
     page: Ref<number>,
     pageSize: Ref<number>,
 
+    recordsCount: Ref<number>,
+    recordsCountString: Ref<string>,
+
     // loaded and transformed facet definitions and actual facets
     facetDefinitions: Ref<FacetDefinitions>,
 

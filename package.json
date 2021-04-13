@@ -1,6 +1,6 @@
 {
   "name": "invenio-vue",
-  "version": "1.0.0a7",
+  "version": "1.0.0a8",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --host localhost",

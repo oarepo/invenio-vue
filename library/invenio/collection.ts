@@ -172,6 +172,31 @@ export function useInvenioCollection<CollectionRecord extends JsonType, ErrorTyp
         })
     }
 
+    const recordsCount = computed(() => {
+        if (!http.data.value) {
+            return 0
+        }
+        const hits = http.data.value.hits.total
+        return typeof hits === 'object' ? hits.value : hits
+    })
+
+    const recordsCountString = computed(() => {
+        if (!http.data.value) {
+            return ''
+        }
+        const hits = http.data.value.hits.total
+        if (typeof hits === 'object') {
+            if (hits.relation === 'gte') {
+                return `≥ ${hits.value}`
+            } else {
+                return `${hits.value}`
+            }
+        } else {
+            return `${hits}`
+        }
+    })
+
+
     const th: InvenioCollectionComposable<CollectionRecord, ErrorType> = {
         records: records as any,
         http,
@@ -186,7 +211,9 @@ export function useInvenioCollection<CollectionRecord extends JsonType, ErrorTyp
         pages,
         page,
         pageSize,
-        setUrl
+        setUrl,
+        recordsCount,
+        recordsCountString
     }
     return th
 }

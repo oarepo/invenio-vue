@@ -3,7 +3,10 @@ import {Config} from 'bili'
 // bili.config.js
 const config: Config = {
     plugins: {
-        vue: true
+        vue: true,
+        babel: {
+            babelHelpers: 'runtime'
+        }
     },
     input: 'library/index.ts',
     output: {

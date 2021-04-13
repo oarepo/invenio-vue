@@ -72,13 +72,18 @@ export function useInvenioCollection<CollectionRecord extends JsonType, ErrorTyp
 
     watch(http.data, () => {
         records.value = (http.data.value?.hits?.hits || []).map(
-            (record: InvenioCollectionRecord<CollectionRecord>) => recordTransformer(
-                record,
-                {
-                    options: options!,
-                    collection: th
+            (record: InvenioCollectionRecord<CollectionRecord>) => {
+                if (!record.links?.ui && record.links?.self) {
+                    record.links.ui = new URL(record.links.self).pathname
                 }
-            )) as any
+                return recordTransformer(
+                    record,
+                    {
+                        options: options!,
+                        collection: th
+                    }
+                )
+            }) as any
     })
 
     function load(opts?: HttpLoadOptions) {

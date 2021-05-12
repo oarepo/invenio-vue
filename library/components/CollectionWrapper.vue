@@ -7,7 +7,15 @@
   ></component>
 </template>
 <script lang="ts">
-import {computed, defineAsyncComponent, defineComponent, ref, resolveComponent, watch} from 'vue'
+import {
+  computed,
+  defineAsyncComponent,
+  defineComponent,
+  onBeforeUnmount,
+  ref,
+  resolveComponent,
+  watch
+} from 'vue'
 import {useInvenioCollection} from '../invenio/collection'
 import {useQuery} from "@oarepo/vue-query-synchronizer";
 import {callAndWatch} from "../utils";
@@ -46,6 +54,7 @@ export default defineComponent({
     const query = useQuery()
     const route = useRoute()
 
+    const beingUnmounted = ref(false)
     const currentUrl = computed(() => props.url || route.path)
 
     callAndWatch(() => props.options, () => {
@@ -56,18 +65,34 @@ export default defineComponent({
       )
     }, {deep: true})
 
-    watch(currentUrl, (newUrl) => {
-      collection.value!.setUrl(newUrl)
-    })
+    watch(currentUrl, function (newUrl) {
+      setTimeout(() => {
+        if (!beingUnmounted.value) {
+          collection.value!.setUrl(newUrl);
+        }
+      })
+    });
 
-    callAndWatch([query], () => {
-      reload()
+    callAndWatch([query], function () {
+      setTimeout(() => {
+        if (!beingUnmounted.value) {
+          reload();
+        }
+      })
     }, {
       deep: true
-    })
+    });
 
-    watch(collection, () => {
-      reload()
+    watch(collection, function () {
+      setTimeout(() => {
+        if (!beingUnmounted.value) {
+          reload();
+        }
+      })
+    });
+
+    onBeforeUnmount(() => {
+      beingUnmounted.value = true
     })
 
     function reload() {

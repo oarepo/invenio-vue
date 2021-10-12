@@ -1,13 +1,6 @@
-import {
-    InvenioCollectionComposable, InvenioRecord,
-    InvenioRecordComposable,
-    InvenioRecordOptions,
-    JsonType,
-    PaginatedInvenioCollection
-} from "./types";
+import {InvenioRecord, InvenioRecordComposable, InvenioRecordOptions, JsonType} from "./types";
 import {HttpError, useHttp} from "../http";
 import {computed, Ref, ref, toRaw, watch} from "vue";
-import {useModel} from "../model";
 import deepcopy from "deepcopy";
 import {NullableProps} from "../types";
 

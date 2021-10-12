@@ -57,10 +57,6 @@ export default defineComponent({
       )
     }, {deep: true})
 
-    watch(currentUrl, (newUrl) => {
-      record.value!.setUrl(newUrl)
-    })
-
     function resolve(c: any, viewer: any, defaultComponent: any) {
       if (c === 'viewer') {
         return viewer

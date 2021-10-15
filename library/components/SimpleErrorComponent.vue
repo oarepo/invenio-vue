@@ -4,7 +4,7 @@
     <div v-if="err.type === 'unknown'">
       <h4>Unknown error</h4>
       <pre>
-        {{ error.raw }}
+        {{ err.raw }}
       </pre>
     </div>
     <div v-else-if="err.type === 'responseMissing'">
